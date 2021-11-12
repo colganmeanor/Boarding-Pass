@@ -474,4 +474,4 @@ const trips = [
   }
 ]
 
-export {travelers, trips}
+module.exports = {travelers, trips}

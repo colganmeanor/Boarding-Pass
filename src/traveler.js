@@ -1,7 +1,10 @@
-class Traveler = {
-  constructor(id, name, type){
-    this.id = id;
-    this.name = name;
-    this.travelerType = type
+class Traveler  {
+  constructor(data){
+    this.id = data.id;
+    this.name = data.name;
+    this.travelerType = data.type
   }
 }
+
+
+module.exports = Traveler
