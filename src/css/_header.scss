@@ -1,0 +1,27 @@
+header {
+  background: $header-background;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  border: solid;
+
+  .logoSection {
+    height: auto;
+    margin-right: -10%;
+    align-content:center;
+    .logo {
+      height: auto;
+      width: 20%;
+    }
+  }
+
+  .splashMessageSection{
+    height: auto;
+  }
+
+  .profileIconSection{
+    height: auto;
+  }
+
+}

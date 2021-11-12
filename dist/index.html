@@ -4,11 +4,64 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Boarding Pass - by Colgan M.</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <header>
+    <div class="logoSection">
+      <img src="./images/turing-logo.png" alt="turing logo" class="logo">
+    </div>
+    <div class="splashMessageSection">
+      <h1>Welcome Splash Message Section</h1>
+      <button>Add New Trip</button>
+    </div>
+    <div class="profileIconSection">
+      <p>Profile Icon Section</p>
+    </div>
+  </header>
+  <main>
+    <section class="tripcolumn presentColumn">
+      <h2>Present Trips</h2>
+      <article class="tripCard">
+        <p>trip date</p>
+        <p>trip destination</p>
+        <p>amount of travelers</p>
+        <p>start date and end date</p>
+        <p>status?</p>
+      </article>
+    </section>
+    <section class="tripcolumn upcomingColumn">
+      <h2>Upcoming Trips</h2>
+      <article class="tripCard">
+        <p>trip date</p>
+        <p>trip destination</p>
+        <p>amount of travelers</p>
+        <p>start date and end date</p>
+        <p>status?</p>
+      </article>
+    </section>
+    <section class="tripcolumn pendingColumn">
+      <h2>Pending Trips</h2>
+      <article class="tripCard">
+        <p>trip date</p>
+        <p>trip destination</p>
+        <p>amount of travelers</p>
+        <p>start date and end date</p>
+        <p>status?</p>
+      </article>
+    </section>
+    <section class="tripcolumn pastColumn">
+      <h2>Past Trips</h2>
+      <article class="tripCard">
+        <p>trip date</p>
+        <p>trip destination</p>
+        <p>amount of travelers</p>
+        <p>start date and end date</p>
+        <p>status?</p>
+      </article>
+    </section>
+  </main>
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
