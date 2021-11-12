@@ -3,8 +3,9 @@ class Traveler  {
     this.id = data.id;
     this.name = data.name;
     this.travelerType = data.type
+    this.trips = []
   }
 }
 
 
-module.exports = Traveler
+export default Traveler

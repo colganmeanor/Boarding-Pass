@@ -1,7 +1,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-import Trip from '../src/trips'
+import Trip from '../src/trip'
 import Traveler from '../src/traveler'
 import {travelers, trips} from './/test-data.js'
 

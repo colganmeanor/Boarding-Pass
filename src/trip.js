@@ -9,15 +9,10 @@ class Trip {
     this.status = data.status,
     this.suggestedActivities = data.suggestedActivities
   }
-
-  // findUserTrips(userID) {
-  //
-  // }
-
 }
 
 
 
 
 
-module.exports = Trip
+export default Trip
