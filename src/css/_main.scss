@@ -1,0 +1,23 @@
+main {
+  background: grey;
+  display: flex;
+  border: solid yellow;
+  justify-content: space-around;
+  flex-direction: row;
+  min-height: inherit;
+
+  .tripcolumn {
+    background: #7b65c1;
+    height: auto;
+    width: 20%;
+    border: solid red;
+    h2 {
+      text-align: center;
+    }
+    .tripCard {
+      text-align: center;
+      border: solid orange;
+      background: white;
+    }
+  }
+}
