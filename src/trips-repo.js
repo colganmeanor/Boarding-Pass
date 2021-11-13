@@ -23,16 +23,6 @@ class TripsRepository {
     return this.userTrips
   }
 
-
-// We're trying to get the total cost of all trips a user has taken
-// what do we have? We have an array of trip objects, we have an array of destination objects
-// we also have the user's trips already saved in this.userTrips so we don't
-// have to filter the trips array any further.
-
-// we should start with the userTrips since this is already filtered.
-// we
-
-
   totalTripCostPerUser(){
     const totalCost = this.userTrips.reduce((sum, trip) => {
       let destinationCost = this.destinations.reduce((sum, destination) => {

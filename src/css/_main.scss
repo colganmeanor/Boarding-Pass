@@ -6,7 +6,7 @@ main {
   flex-direction: row;
   min-height: inherit;
 
-  .tripcolumn {
+  .trip-column {
     background: #7b65c1;
     height: auto;
     width: 20%;
@@ -14,7 +14,7 @@ main {
     h2 {
       text-align: center;
     }
-    .tripCard {
+    .trip-card {
       text-align: center;
       border: solid orange;
       background: white;
