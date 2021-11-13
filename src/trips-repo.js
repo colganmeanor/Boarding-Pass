@@ -11,10 +11,12 @@ class TripsRepository {
   }
 
   createTrips(){
-    this.trips = this.rawData.map((data) => {
-      return new Trip(data)
+    const createdTrips = this.rawData.map((data) => {
+      let newTrip = new Trip(data)
+      newTrip.convertDestinationID(this.destinations)
+      return newTrip
     })
-    return this.trips
+    this.trips = createdTrips
   }
 
   findUserTrips(id){
@@ -23,6 +25,8 @@ class TripsRepository {
     })
     return this.userTrips
   }
+
+
 
   totalTripCostPerUser(){
     const totalCost = this.userTrips.reduce((sum, trip) => {
