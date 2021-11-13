@@ -1,13 +1,14 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-// An example of how you tell webpack to use a CSS (SCSS) file
+// Imports
 import Traveler from './traveler'
 import Trip from './trip'
 import TripsRepository from './trips-repo'
 import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
   from './apiCalls';
 import './css/base.scss';
+import './images/turing-logo.png'
 
 
 // Global Variables
@@ -16,17 +17,18 @@ const today = '2020/04/09'
 let currentTraveler
 let tripRepo
 
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-
-
 console.log('This is the JavaScript entry file - your code begins here.');
+
+// Query Selectors
+
+const headerMessage = document.querySelector('#splashMessage')
+
 
 // Functions
 
 const pageLoad = () => {
   fetchData()
+
 }
 
 const fetchData = () => {
@@ -35,13 +37,12 @@ const fetchData = () => {
   }).then(values => {
     generateTraveler(values[0])
     generateTripRepo(values[1].trips, values[2].destinations)
-    console.log(tripRepo)
-  }).then(
-    // tripRepo.createTrips()
-    // tripRepo.findUserTrips(currentTraveler.id)
-
-  )
+    tripRepo.createTrips()
+    tripRepo.findUserTrips(currentTraveler.id)
+    updateHeaderMessage()
+  })
 }
+
 
 // generateTraveler(values[0])
 // generateTripRepo(values[1], values[2])
@@ -53,6 +54,11 @@ const generateTraveler = (data) => {
 const generateTripRepo = (tripData, destinationData) => {
   tripRepo = new TripsRepository(tripData, destinationData)
 }
+
+const updateHeaderMessage = () => {
+  headerMessage.innerText = `Welcome back ${currentTraveler.name}`
+}
+
 
 // Event Listeners
 
