@@ -1,8 +1,8 @@
 import Trip from './trip'
 
 class TripsRepository {
-  constructor(tripData, destinationsData){
-    this.rawData = tripData
+  constructor(tripsData, destinationsData){
+    this.rawData = tripsData
     this.trips = []
     this.userTrips = []
     this.destinations = destinationsData
