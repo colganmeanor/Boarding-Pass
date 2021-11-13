@@ -32,7 +32,7 @@ const pageLoad = () => {
     return Promise.all(values.map(result => result.json()));
   }).then(values => {
     generateClasses(values[0], values[1], values[2])
-    pageLoadDom(currentTraveler)
+    pageLoadDom(currentTraveler, tripRepo)
   })
 }
 
@@ -52,8 +52,10 @@ const generateTraveler = (data) => {
 
 const generateTripRepo = (tripData, destinationData) => {
   tripRepo = new TripsRepository(tripData, destinationData)
-  tripRepo.findUserTrips(currentTraveler.id)
   tripRepo.createTrips()
+  tripRepo.findUserTrips(currentTraveler.id)
+  tripRepo.totalTripCostPerUser()
+  tripRepo.showDestinationNames()
 }
 
 

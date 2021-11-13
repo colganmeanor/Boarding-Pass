@@ -6,15 +6,19 @@
 const headerMessage = document.querySelector('#splashMessage')
 
 
-const pageLoadDom = (currentTraveler) => {
-  updateHeaderMessage(currentTraveler)
-  console.log(currentTraveler)
+const pageLoadDom = (currentTraveler, tripRepo) => {
+  updateHeaderMessage(currentTraveler, tripRepo)
+  console.log(tripRepo)
 }
 
-const updateHeaderMessage = (currentTraveler) => {
-  headerMessage.innerText = `Welcome back ${currentTraveler.name}`
+const updateHeaderMessage = (currentTraveler, tripRepo) => {
+  headerMessage.innerHTML = `Welcome back ${currentTraveler.name}. <br> You've spent
+  $${tripRepo.userTotalCost} total on trips.`
 }
 
+const populateColumns = (tripRepo) => {
+  console.log(tripRepo)
+}
 
 
 

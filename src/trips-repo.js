@@ -5,7 +5,8 @@ class TripsRepository {
     this.rawData = tripsData.trips
     this.trips = []
     this.userTrips = []
-    this.destinations = destinationsData
+    this.userTotalCost = 0
+    this.destinations = destinationsData.destinations
     this.destinationNames = []
   }
 
@@ -36,7 +37,9 @@ class TripsRepository {
       }, 0)
       return sum += destinationCost
     }, 0)
-    return Math.round(totalCost)
+    this.userTotalCost = totalCost
+    return totalCost
+
   }
 
   showDestinationNames(){
