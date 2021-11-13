@@ -2,7 +2,7 @@ import Trip from './trip'
 
 class TripsRepository {
   constructor(tripsData, destinationsData){
-    this.rawData = tripsData
+    this.rawData = tripsData.trips
     this.trips = []
     this.userTrips = []
     this.destinations = destinationsData

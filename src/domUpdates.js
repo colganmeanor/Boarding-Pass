@@ -1,4 +1,5 @@
-import { currentTraveler, today } from './scripts'
+// import { currentTraveler, today } from './scripts'
+// console.log(currentTraveler)
 
 // Query Selectors
 
