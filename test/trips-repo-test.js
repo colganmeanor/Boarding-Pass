@@ -15,7 +15,8 @@ describe('TripsRepository', () => {
 
   testTripRepo = new TripsRepository(trips, destinations)
   testTripRepo.createTrips()
-  testTripRepo.findUserTrips(1)
+  testTripRepo.findUserTrips(2)
+  testTripRepo.showDestinationNames()
 
 
 })
@@ -33,11 +34,19 @@ it('should be able to create new instances of the trip class', () => {
 })
 
 it('should be able to return trips for the current user', () => {
-  expect(testTripRepo.userTrips[0].userID).to.equal(1)
+  expect(testTripRepo.userTrips[0].userID).to.equal(2)
 })
 
-// it('should be able to return a list of destination names', () => {
-//   expect(testTripRepo.)
-// })
+it('should be able to hold onto destination data', () => {
+  expect(testTripRepo.destinations[0].destination).to.equal('Lima, Peru')
+})
+
+it('should be able to return just the names of available destinations', () => {
+  expect(testTripRepo.destinationNames[0]).to.equal('Lima, Peru')
+})
+
+it('should be able to find the total cost of all trips for a given user', () => {
+  expect(testTripRepo.totalTripCostPerUser()).to.equal(3919)
+})
 
 });
