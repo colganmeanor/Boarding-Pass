@@ -38,6 +38,7 @@ const fillPresentColumn = (tripRepo) => {
       <p>Destination: ${trip.destinationName}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Status: ${trip.status}</p>
+      <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
   })
@@ -52,6 +53,7 @@ const fillUpcomingColumn = (tripRepo) => {
       <p>Destination: ${trip.destinationName}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Status: ${trip.status}</p>
+      <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
   })
@@ -66,6 +68,7 @@ const fillPendingColumn = (tripRepo) => {
       <p>Destination: ${trip.destinationName}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Status: ${trip.status}</p>
+      <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
   })
@@ -80,6 +83,7 @@ const fillPastColumn = (tripRepo) => {
       <p>Destination: ${trip.destinationName}</p>
       <p>Travelers: ${trip.travelers}</p>
       <p>Status: ${trip.status}</p>
+      <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
   })

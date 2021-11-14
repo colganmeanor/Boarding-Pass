@@ -20,6 +20,7 @@ class TripsRepository {
     const createdTrips = this.rawData.map((data) => {
       let newTrip = new Trip(data)
       newTrip.convertDestinationID(this.destinations)
+      newTrip.calculateTotalCost(this.destinations)
       return newTrip
     })
     this.trips = createdTrips
@@ -48,20 +49,9 @@ class TripsRepository {
 
   totalTripCostPerUser(){
     const totalCost = this.userTrips.reduce((sum, trip) => {
-      let destinationCost = this.destinations.reduce((sum, destination) => {
-        if (trip.destinationID === destination.id){
-          let totalTripCost = destination.estimatedLodgingCostPerDay +
-          destination.estimatedFlightCostPerPerson;
-          let agentFee = totalTripCost / 10;
-          sum += (totalTripCost + agentFee)
-        }
-        return sum
-      }, 0)
-      return sum += destinationCost
+      return sum += trip.totalCost
     }, 0)
     this.userTotalCost = totalCost
-    return totalCost
-
   }
 
   showDestinationNames(){
