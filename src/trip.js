@@ -4,6 +4,8 @@ class Trip {
     this.userID = data.userID,
     this.destinationID = data.destinationID,
     this.destinationName = undefined,
+    this.image = undefined,
+    this.imageAlt = undefined,
     this.travelers = data.travelers,
     this.date = data.date,
     this.duration = data.duration,
@@ -30,6 +32,19 @@ class Trip {
     this.totalCost = tripCost + agentFee
 }
 
+  grabDestinationImages(array){
+    const destinationResult = array.find((item) => {
+      return item.id === this.destinationID
+    })
+    this.imageAlt = destinationResult.alt;
+    this.image = destinationResult.image;
+  }
+
+  siphonDestinationData(array) {
+      this.convertDestinationID(array)
+      this.calculateTotalCost(array)
+      this.grabDestinationImages(array)
+  }
 
 }
 

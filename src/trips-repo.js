@@ -19,8 +19,7 @@ class TripsRepository {
   createTrips(){
     const createdTrips = this.rawData.map((data) => {
       let newTrip = new Trip(data)
-      newTrip.convertDestinationID(this.destinations)
-      newTrip.calculateTotalCost(this.destinations)
+      newTrip.siphonDestinationData(this.destinations)
       return newTrip
     })
     this.trips = createdTrips
