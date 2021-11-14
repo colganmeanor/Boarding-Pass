@@ -1,19 +1,28 @@
 import Trip from './trip'
 
+// const today = '2020/06/13'
+
 class TripsRepository {
-  constructor(tripData, destinationsData){
-    this.rawData = tripData
+  constructor(tripsData, destinationsData){
+    this.rawData = tripsData.trips
     this.trips = []
     this.userTrips = []
-    this.destinations = destinationsData
+    this.presentTrips = []
+    this.upcomingTrips = []
+    this.pendingTrips = []
+    this.pastTrips = []
+    this.userTotalCost = 0
+    this.destinations = destinationsData.destinations
     this.destinationNames = []
   }
 
   createTrips(){
-    this.trips = this.rawData.map((data) => {
-      return new Trip(data)
+    const createdTrips = this.rawData.map((data) => {
+      let newTrip = new Trip(data)
+      newTrip.convertDestinationID(this.destinations)
+      return newTrip
     })
-    return this.trips
+    this.trips = createdTrips
   }
 
   findUserTrips(id){
@@ -21,6 +30,20 @@ class TripsRepository {
       return data.userID === id
     })
     return this.userTrips
+  }
+
+  sortUserTrips(date){
+    this.userTrips.forEach((trip) => {
+      if (trip.date < date && trip.status === 'approved') {
+        this.pastTrips.push(trip)
+      } else if (trip.date > date && trip.status === 'approved'){
+        this.upcomingTrips.push(trip)
+      } else if (trip.date === date && trip.status === 'approved'){
+        this.presentTrips.push(trip)
+      } else {
+        this.pendingTrips.push(trip)
+      }
+    })
   }
 
   totalTripCostPerUser(){
@@ -36,7 +59,9 @@ class TripsRepository {
       }, 0)
       return sum += destinationCost
     }, 0)
-    return Math.round(totalCost)
+    this.userTotalCost = totalCost
+    return totalCost
+
   }
 
   showDestinationNames(){
