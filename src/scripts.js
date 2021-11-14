@@ -14,7 +14,7 @@ import './images/turing-logo.png'
 
 // Global Variables
 
-const today = '2020/04/09'
+const today = '2020/04/03'
 let currentTraveler
 let tripRepo
 
@@ -56,6 +56,7 @@ const generateTripRepo = (tripData, destinationData) => {
   tripRepo.findUserTrips(currentTraveler.id)
   tripRepo.totalTripCostPerUser()
   tripRepo.showDestinationNames()
+  tripRepo.sortUserTrips(today)
 }
 
 

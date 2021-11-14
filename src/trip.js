@@ -7,6 +7,7 @@ class Trip {
     this.travelers = data.travelers,
     this.date = data.date,
     this.duration = data.duration,
+    this.endDate = undefined
     this.status = data.status,
     this.suggestedActivities = data.suggestedActivities
   }
