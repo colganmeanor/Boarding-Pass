@@ -9,7 +9,7 @@ class Trip {
     this.image = undefined,
     this.imageAlt = undefined,
     this.travelers = data.travelers,
-    this.date = data.date,
+    this.startDate = dayjs(data.date).format('MM/DD/YYYY'),
     this.duration = data.duration,
     this.endDate = undefined,
     this.status = data.status,
@@ -42,11 +42,18 @@ class Trip {
     this.image = destinationResult.image;
   }
 
+  calculateEndDate(){
+    this.endDate = dayjs(this.startDate).add(this.duration, 'days').format('MM/DD/YYYY')
+  }
+
   siphonDestinationData(array) {
       this.convertDestinationID(array)
       this.calculateTotalCost(array)
       this.grabDestinationImages(array)
+      this.calculateEndDate()
   }
+
+
 
 }
 

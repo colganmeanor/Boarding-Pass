@@ -1,9 +1,13 @@
 main {
 
   .present-trip-window{
-    height: auto;
+    height: 40%;
     width: auto;
-
+    .trip-card {
+      text-align: center;
+      border: solid orange;
+      background: white;
+    }
   }
 
 
