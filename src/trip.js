@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 class Trip {
   constructor(data){
     this.id = data.id,

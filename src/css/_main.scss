@@ -1,23 +1,35 @@
 main {
-  background: grey;
-  display: flex;
-  border: solid yellow;
-  justify-content: space-around;
-  flex-direction: row;
-  min-height: inherit;
 
-  .trip-column {
-    background: #7b65c1;
+  .present-trip-window{
     height: auto;
-    width: 20%;
-    border: solid red;
-    h2 {
-      text-align: center;
-    }
-    .trip-card {
-      text-align: center;
-      border: solid orange;
-      background: white;
+    width: auto;
+
+  }
+
+
+  .column-container {
+    background: grey;
+    display: flex;
+    border: solid yellow;
+    justify-content: space-around;
+    flex-direction: row;
+    min-height: 100vh;
+
+    .trip-column {
+      background: #7b65c1;
+      height: auto;
+      width: 20%;
+      border: solid red;
+
+      h2 {
+        text-align: center;
+      }
+
+      .trip-card {
+        text-align: center;
+        border: solid orange;
+        background: white;
+      }
     }
   }
 }

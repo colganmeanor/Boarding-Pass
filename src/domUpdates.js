@@ -1,4 +1,4 @@
-// import { currentTraveler, today } from './scripts'
+import dayjs from 'dayjs';
 // console.log(currentTraveler)
 
 // Query Selectors
@@ -8,6 +8,7 @@ const presentColumn = document.querySelector('#presentColumn')
 const upcomingColumn = document.querySelector('#upcomingColumn')
 const pendingColumn = document.querySelector('#pendingColumn')
 const pastColumn = document.querySelector('#pastColumn')
+const presentTripWindow = document.querySelector('#presentTripWindow')
 
 
 const pageLoadDom = (currentTraveler, tripRepo) => {
@@ -22,17 +23,21 @@ const updateHeaderMessage = (currentTraveler, tripRepo) => {
 }
 
 const populateColumns = (tripRepo) => {
-  fillPresentColumn(tripRepo)
+  checkForPresentTrip(tripRepo)
+  // console.log(tripRepo)
   fillUpcomingColumn(tripRepo)
   fillPendingColumn(tripRepo)
   fillPastColumn(tripRepo)
 }
 
 
-const fillPresentColumn = (tripRepo) => {
-  tripRepo.presentTrips.forEach((trip) => {
-    presentColumn.innerHTML += `
-    <article class="trip-card">
+const checkForPresentTrip = (tripRepo) => {
+    if (!tripRepo.presentTrips.length === 0) {
+      presentTripWindow.innerHTML = `<p>There ain't no trips</p>`
+    } else {
+      console.log(tripRepo.presentTrips)
+      tripRepo.presentTrips.forEach((trip) => {
+          presentTripWindow.innerHTML = `<article class="trip-card">
       <p>Date: ${trip.date}</p>
       <p>Duration: ${trip.duration}</p>
       <p>Destination: ${trip.destinationName}</p>
@@ -42,11 +47,28 @@ const fillPresentColumn = (tripRepo) => {
     </article>
     `
   })
-}
+      }
+    }
 
-const fillUpcomingColumn = (tripRepo) => {
-  tripRepo.upcomingTrips.forEach((trip) => {
-    upcomingColumn.innerHTML += `
+
+    // const fillPresentColumn = (tripRepo) => {
+    //   tripRepo.presentTrips.forEach((trip) => {
+    //     presentColumn.innerHTML += `
+    //     <article class="trip-card">
+    //       <p>Date: ${trip.date}</p>
+    //       <p>Duration: ${trip.duration}</p>
+    //       <p>Destination: ${trip.destinationName}</p>
+    //       <p>Travelers: ${trip.travelers}</p>
+    //       <p>Status: ${trip.status}</p>
+    //       <p>Total Cost: $${trip.totalCost}</p>
+    //     </article>
+    //     `
+    //   })
+    // }
+
+    const fillUpcomingColumn = (tripRepo) => {
+      tripRepo.upcomingTrips.forEach((trip) => {
+        upcomingColumn.innerHTML += `
     <article class="trip-card">
       <p>Date: ${trip.date}</p>
       <p>Duration: ${trip.duration}</p>
@@ -56,12 +78,12 @@ const fillUpcomingColumn = (tripRepo) => {
       <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
-  })
-}
+      })
+    }
 
-const fillPendingColumn = (tripRepo) => {
-  tripRepo.pendingTrips.forEach((trip) => {
-    pendingColumn.innerHTML += `
+    const fillPendingColumn = (tripRepo) => {
+      tripRepo.pendingTrips.forEach((trip) => {
+        pendingColumn.innerHTML += `
     <article class="trip-card">
       <p>Date: ${trip.date}</p>
       <p>Duration: ${trip.duration}</p>
@@ -71,12 +93,12 @@ const fillPendingColumn = (tripRepo) => {
       <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
-  })
-}
+      })
+    }
 
-const fillPastColumn = (tripRepo) => {
-  tripRepo.pastTrips.forEach((trip) => {
-    pastColumn.innerHTML += `
+    const fillPastColumn = (tripRepo) => {
+      tripRepo.pastTrips.forEach((trip) => {
+        pastColumn.innerHTML += `
     <article class="trip-card">
       <p>Date: ${trip.date}</p>
       <p>Duration: ${trip.duration}</p>
@@ -86,8 +108,8 @@ const fillPastColumn = (tripRepo) => {
       <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
-  })
-}
+      })
+    }
 
 
-export default pageLoadDom
+    export default pageLoadDom

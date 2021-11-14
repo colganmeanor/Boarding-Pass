@@ -8,6 +8,7 @@ import TripsRepository from './trips-repo'
 import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
   from './apiCalls';
 import pageLoadDom from './domUpdates'
+import dayjs from 'dayjs';
 import './css/base.scss';
 import './images/turing-logo.png'
 
@@ -19,6 +20,10 @@ let currentTraveler
 let tripRepo
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+let dayJSTest = dayjs(today).subtract(2, 'days').format('YYYY/MM/DD')
+console.log(today)
+console.log(dayJSTest)
 
 
 
