@@ -8,17 +8,31 @@ import TripsRepository from './trips-repo'
 import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
   from './apiCalls';
 import pageLoadDom from './domUpdates'
+import dayjs from 'dayjs';
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
+
 import './css/base.scss';
 import './images/turing-logo.png'
 
 
 // Global Variables
 
-const today = '2020/04/03'
+const today = '04/03/2020'
 let currentTraveler
 let tripRepo
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+// let dayJSTest = dayjs(today).subtract(2, 'days').format('YYYY/MM/DD')
+// console.log(today)
+// console.log(dayJSTest)
+
+// let testDate = '04/03/2019'
+//
+// // let testResult = dayjs(testDate).from(dayjs(today))
+// // console.log(testResult)
+// console.log(today < testDate)
 
 
 

@@ -1,4 +1,8 @@
 import Trip from './trip'
+import dayjs from 'dayjs';
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
+
 
 // const today = '2020/06/13'
 
@@ -32,19 +36,37 @@ class TripsRepository {
     return this.userTrips
   }
 
-  sortUserTrips(date){
+  // sortUserTrips(date){
+  //   this.userTrips.forEach((trip) => {
+  //     if (trip.startDate < date && trip.status === 'approved') {
+  //       this.pastTrips.push(trip)
+  //     } else if (trip.startDate > date && trip.status === 'approved'){
+  //       this.upcomingTrips.push(trip)
+  //     } else if (trip.startDate === date && trip.status === 'approved'){
+  //       this.presentTrips.push(trip)
+  //     } else {
+  //       this.pendingTrips.push(trip)
+  //     }
+  //   })
+  // }
+
+  sortUserTrips(today){
+    console.log(dayjs(today) > dayjs('12/19/2019'))
     this.userTrips.forEach((trip) => {
-      if (trip.date < date && trip.status === 'approved') {
-        this.pastTrips.push(trip)
-      } else if (trip.date > date && trip.status === 'approved'){
-        this.upcomingTrips.push(trip)
-      } else if (trip.date === date && trip.status === 'approved'){
-        this.presentTrips.push(trip)
+      if (trip.status === 'approved') {
+        if (dayjs(trip.startDate) < dayjs(today) && dayjs(trip.endDate) < dayjs(today)){
+          this.pastTrips.push(trip)
+        } else if (dayjs(trip.startDate) > dayjs(today)){
+          this.upcomingTrips.push(trip)
+        } else {
+          this.presentTrips.push(trip)
+        }
       } else {
         this.pendingTrips.push(trip)
       }
     })
   }
+
 
   totalTripCostPerUser(){
     const totalCost = this.userTrips.reduce((sum, trip) => {

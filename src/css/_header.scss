@@ -6,6 +6,13 @@ header {
   align-content: flex-start;
   border: solid;
 
+  button {
+    .add-new-trip-button {
+      // display:none;
+    }
+
+  }
+
   .logo {
     height: auto;
     width: 13%;
