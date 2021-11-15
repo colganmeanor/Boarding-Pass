@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { postTrip } from './scripts'
 // console.log(currentTraveler)
 
 // Query Selectors
@@ -11,11 +12,13 @@ const pastColumn = document.querySelector('#pastColumn')
 const presentTripWindow = document.querySelector('#presentTripWindow')
 const headerButton = document.querySelector('#addNewTripButton')
 const bodyButton = document.querySelector('#addNewTripButtonBody')
+const testButton = document.querySelector('#addNewTripButton')
+
 
 
 const pageLoadDom = (currentTraveler, tripRepo) => {
   updateHeaderMessage(currentTraveler, tripRepo)
-  console.log(tripRepo)
+  // console.log(tripRepo)
   populateColumns(tripRepo)
 }
 
@@ -38,12 +41,12 @@ const checkForPresentTrip = (tripRepo) => {
       headerButton.classList.add('hidden');
       presentTripWindow.innerHTML = `
       <article class="trip-card">
-      <p>There ain't no trips at the moment - maybe consider adding one now?</p>
+      <p>It seems we don't have any current trips logged for you, click the button below to get started!</p>
       <button class="add-new-trip-button" id="addNewTripButtonBody">Add New Trip</button>
       </article>`;
 
     } else {
-      console.log(tripRepo.presentTrips)
+      // console.log(tripRepo.presentTrips)
       presentTripWindow.innerHTML = ``
       tripRepo.presentTrips.forEach((trip) => {
           presentTripWindow.innerHTML += `<article class="trip-card">
@@ -120,5 +123,14 @@ const checkForPresentTrip = (tripRepo) => {
       })
     }
 
+
+
+    const sampleTrip = {id: 888, userID: 2, destinationID: 1, travelers: 2, date: '2020/04/04', duration: 3, status: 'pending', suggestedActivities: []}
+
+    const clickButton = (obj) => {
+      postTrip(obj)
+    }
+
+    // testButton.addEventListener('click', clickButton(sampleTrip))
 
     export default pageLoadDom

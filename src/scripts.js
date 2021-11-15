@@ -74,9 +74,32 @@ const generateTripRepo = (tripData, destinationData) => {
 }
 
 
-pageLoad()
+const sampleTrip = {id: 999, userID: 2, destinationID: 1, travelers: 2, date: '2020/04/04', duration: 3, status: 'pending', suggestedActivities: []}
+console.log(sampleTrip)
 
+const postTrip = (data) => {
+fetch('http://localhost:3001/api/v1/trips', {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}).then(response => response.json())
+  .then(json => console.log(json))
+}
+
+const testButton = document.querySelector('#addNewTripButton')
+// testButton.addEventListener('click', postTrip(sampleTrip));
+
+pageLoad()
+// postTrip(sampleTrip)
+
+testButton.addEventListener('click', () => {
+  postTrip(sampleTrip)
+})
 
 // Event Listeners
 
-export default { currentTraveler, today }
+
+
+export { currentTraveler, today, postTrip }

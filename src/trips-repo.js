@@ -51,7 +51,7 @@ class TripsRepository {
   // }
 
   sortUserTrips(today){
-    console.log(dayjs(today) > dayjs('12/19/2019'))
+    // console.log(dayjs(today) > dayjs('12/19/2019'))
     this.userTrips.forEach((trip) => {
       if (trip.status === 'approved') {
         if (dayjs(trip.startDate) < dayjs(today) && dayjs(trip.endDate) < dayjs(today)){
