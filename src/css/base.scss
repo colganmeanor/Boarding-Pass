@@ -2,6 +2,10 @@
 @import '_variables';
 @import '_header';
 @import '_main';
+@import '_modal';
+@import '_datepicker';
+// @import '~js-datepicker/src/datepicker'
+// @import '~js-datepicker/dist/datepicker.min.css'
 
 body {
   border: solid green;

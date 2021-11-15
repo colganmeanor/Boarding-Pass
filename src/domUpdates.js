@@ -1,5 +1,11 @@
 import dayjs from 'dayjs';
-// import { postTrip } from './scripts'
+import MicroModal from 'micromodal';
+// var MicroModal = require('micromodal')
+import {
+  postTrip
+} from './scripts'
+import datepicker from 'js-datepicker'
+
 // console.log(currentTraveler)
 
 // Query Selectors
@@ -12,7 +18,23 @@ const pastColumn = document.querySelector('#pastColumn')
 const presentTripWindow = document.querySelector('#presentTripWindow')
 const headerButton = document.querySelector('#addNewTripButton')
 const bodyButton = document.querySelector('#addNewTripButtonBody')
-const testButton = document.querySelector('#addNewTripButton')
+const modalContinueOne = document.querySelector('#continueButtonOne')
+const modalWindowOne = document.querySelector('.modal-1-window-1')
+const modalWindowTwo = document.querySelector('.modal-1-window-2')
+const modalWindowThree = document.querySelector('.modal-1-window-3')
+const modalWindowFour = document.querySelector('.modal-1-window-4')
+const modalWindowFive = document.querySelector('.modal-1-window-5')
+const destinationButton = document.querySelector('#destinationButton')
+const tripDuration = document.querySelector('#tripDuration')
+const continueButtonFour = document.querySelector('#continueButtonFour')
+const destinationPicker = document.querySelector('#destinationPicker')
+
+
+const startDate = datepicker('#modalCalendarOne', {
+  id: 1
+})
+
+
 
 
 
@@ -20,6 +42,9 @@ const pageLoadDom = (currentTraveler, tripRepo) => {
   updateHeaderMessage(currentTraveler, tripRepo)
   // console.log(tripRepo)
   populateColumns(tripRepo)
+  populateFormSelect(tripRepo)
+  MicroModal.init();
+  // MicroModal.close('modal-1')
 }
 
 const updateHeaderMessage = (currentTraveler, tripRepo) => {
@@ -37,19 +62,19 @@ const populateColumns = (tripRepo) => {
 
 
 const checkForPresentTrip = (tripRepo) => {
-    if (tripRepo.presentTrips.length === 0) {
-      headerButton.classList.add('hidden');
-      presentTripWindow.innerHTML = `
+  if (tripRepo.presentTrips.length === 0) {
+    headerButton.classList.add('hidden');
+    presentTripWindow.innerHTML = `
       <article class="trip-card">
       <p>It seems we don't have any current trips logged for you, click the button below to get started!</p>
       <button class="add-new-trip-button" id="addNewTripButtonBody">Add New Trip</button>
       </article>`;
 
-    } else {
-      // console.log(tripRepo.presentTrips)
-      presentTripWindow.innerHTML = ``
-      tripRepo.presentTrips.forEach((trip) => {
-          presentTripWindow.innerHTML += `<article class="trip-card">
+  } else {
+    // console.log(tripRepo.presentTrips)
+    presentTripWindow.innerHTML = ``
+    tripRepo.presentTrips.forEach((trip) => {
+      presentTripWindow.innerHTML += `<article class="trip-card">
             <p>Start Date: ${trip.startDate}</p>
             <p>End Date: ${trip.endDate}</p>
             <p>Destination: ${trip.destinationName}</p>
@@ -58,29 +83,29 @@ const checkForPresentTrip = (tripRepo) => {
             <p>Total Cost: $${trip.totalCost}</p>
           </article>
     `
-  })
-      }
-    }
+    })
+  }
+}
 
 
-    // const fillPresentColumn = (tripRepo) => {
-    //   tripRepo.presentTrips.forEach((trip) => {
-    //     presentColumn.innerHTML += `
-    //     <article class="trip-card">
-    //       <p>Date: ${trip.date}</p>
-    //       <p>Duration: ${trip.duration}</p>
-    //       <p>Destination: ${trip.destinationName}</p>
-    //       <p>Travelers: ${trip.travelers}</p>
-    //       <p>Status: ${trip.status}</p>
-    //       <p>Total Cost: $${trip.totalCost}</p>
-    //     </article>
-    //     `
-    //   })
-    // }
+// const fillPresentColumn = (tripRepo) => {
+//   tripRepo.presentTrips.forEach((trip) => {
+//     presentColumn.innerHTML += `
+//     <article class="trip-card">
+//       <p>Date: ${trip.date}</p>
+//       <p>Duration: ${trip.duration}</p>
+//       <p>Destination: ${trip.destinationName}</p>
+//       <p>Travelers: ${trip.travelers}</p>
+//       <p>Status: ${trip.status}</p>
+//       <p>Total Cost: $${trip.totalCost}</p>
+//     </article>
+//     `
+//   })
+// }
 
-    const fillUpcomingColumn = (tripRepo) => {
-      tripRepo.upcomingTrips.forEach((trip) => {
-        upcomingColumn.innerHTML += `
+const fillUpcomingColumn = (tripRepo) => {
+  tripRepo.upcomingTrips.forEach((trip) => {
+    upcomingColumn.innerHTML += `
         <article class="trip-card">
           <p>Start Date: ${trip.startDate}</p>
           <p>End Date: ${trip.endDate}</p>
@@ -90,12 +115,12 @@ const checkForPresentTrip = (tripRepo) => {
           <p>Total Cost: $${trip.totalCost}</p>
         </article>
     `
-      })
-    }
+  })
+}
 
-    const fillPendingColumn = (tripRepo) => {
-      tripRepo.pendingTrips.forEach((trip) => {
-        pendingColumn.innerHTML += `
+const fillPendingColumn = (tripRepo) => {
+  tripRepo.pendingTrips.forEach((trip) => {
+    pendingColumn.innerHTML += `
     <article class="trip-card">
       <p>Start Date: ${trip.startDate}</p>
       <p>End Date: ${trip.endDate}</p>
@@ -105,12 +130,12 @@ const checkForPresentTrip = (tripRepo) => {
       <p>Total Cost: $${trip.totalCost}</p>
     </article>
     `
-      })
-    }
+  })
+}
 
-    const fillPastColumn = (tripRepo) => {
-      tripRepo.pastTrips.forEach((trip) => {
-        pastColumn.innerHTML += `
+const fillPastColumn = (tripRepo) => {
+  tripRepo.pastTrips.forEach((trip) => {
+    pastColumn.innerHTML += `
         <article class="trip-card">
           <p>Start Date: ${trip.startDate}</p>
           <p>End Date: ${trip.endDate}</p>
@@ -120,8 +145,73 @@ const checkForPresentTrip = (tripRepo) => {
           <p>Total Cost: $${trip.totalCost}</p>
         </article>
     `
-      })
+  })
+}
+
+const populateFormSelect = (tripRepo) => {
+  tripRepo.destinationNames.forEach((destination) => {
+    destinationPicker.innerHTML += `<option value="${destination}">${destination}</option>`
+  })
+}
+
+
+const randomNum = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+return Math.floor(Math.random() * (max - min) + min);
+}
+
+// console.log(randomNum(200, 20000))
+
+const submitForm = (currentTraveler, tripRepo) => {
+  let startDate = dayjs(modalCalendarOne.value).format('YYYY/MM/DD')
+
+
+
+    const tripData = {
+      id: randomNum(250, 15000),
+      userID: currentTraveler.id,
+      destinationID: tripRepo.convertDestinationNameToID(destinationPicker.value),
+      travelers: travelerNumber.value,
+      date: dayjs(modalCalendarOne.value).format('YYYY/MM/DD'),
+      duration: tripDuration.value,
+      status: 'pending',
+      suggestedActivities: [],
     }
+    console.log(tripData)
+    postTrip(tripData)
+  }
+
+const showHide = (elementOne, elementTwo) => {
+  elementOne.classList.add('hidden')
+  elementTwo.classList.remove('hidden')
+}
+
+// const micromodalWindow = () => {
+//   MicroModal.open('modal-1')
+// }
 
 
-    export default pageLoadDom
+continueButtonOne.addEventListener('click', () => {
+  showHide(modalWindowOne, modalWindowTwo);
+  // modalWindowTwo.innerHTML += `<input type = 'text'>picker</input>`
+})
+continueButtonTwo.addEventListener('click', () => {
+  showHide(modalWindowTwo, modalWindowThree)
+})
+continueButtonThree.addEventListener('click', () => {
+  showHide(modalWindowThree, modalWindowFour)
+})
+continueButtonFour.addEventListener('click', () => {
+  showHide(modalWindowFour, modalWindowFive)
+})
+
+// destinationButton.addEventListener('click', () => {
+//   destinationContent.classList.toggle('show')
+// })
+
+
+
+
+
+export { pageLoadDom, submitForm }

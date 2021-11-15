@@ -7,7 +7,7 @@ import Trip from './trip'
 import TripsRepository from './trips-repo'
 import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
   from './apiCalls';
-import pageLoadDom from './domUpdates'
+import {pageLoadDom, submitForm} from './domUpdates'
 import dayjs from 'dayjs';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -74,9 +74,6 @@ const generateTripRepo = (tripData, destinationData) => {
 }
 
 
-const sampleTrip = {id: 999, userID: 2, destinationID: 1, travelers: 2, date: '2020/04/04', duration: 3, status: 'pending', suggestedActivities: []}
-console.log(sampleTrip)
-
 const postTrip = (data) => {
 fetch('http://localhost:3001/api/v1/trips', {
   method: 'POST',
@@ -88,18 +85,23 @@ fetch('http://localhost:3001/api/v1/trips', {
   .then(json => console.log(json))
 }
 
-const testButton = document.querySelector('#addNewTripButton')
+// const testButton = document.querySelector('#addNewTripButton')
 // testButton.addEventListener('click', postTrip(sampleTrip));
 
 pageLoad()
 // postTrip(sampleTrip)
 
-testButton.addEventListener('click', () => {
-  postTrip(sampleTrip)
-})
+// testButton.addEventListener('click', () => {
+//   postTrip(sampleTrip)
+// })
+
+const finishButton = document.querySelector('#finishButton')
 
 // Event Listeners
+finishButton.addEventListener('click', () => {
+  submitForm(currentTraveler, tripRepo)
+  MicroModal.close('modal-1')
+})
 
 
-
-export { currentTraveler, today, postTrip }
+export { currentTraveler, tripRepo, today, postTrip }

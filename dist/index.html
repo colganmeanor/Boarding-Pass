@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boarding Pass - by Colgan M.</title>
 </head>
+
 <body>
   <header>
 
-      <img src="./images/turing-logo.png" alt="turing logo" class="logo">
+    <img src="./images/turing-logo.png" alt="turing logo" class="logo">
 
     <div class="splash-message-section">
       <h1 id="splashMessage">Welcome Back User!</h1>
-      <button class="add-new-trip-button" id="addNewTripButton">Add New Trip</button>
+      <button class="add-new-trip-button" id="addNewTripButton" data-micromodal-trigger="modal-1">Add New Trip</button>
     </div>
     <div class="profile-icon-section">
       <p>Profile Icon Section</p>
@@ -28,26 +30,79 @@
 
     </section> -->
     <div class="column-container">
-      <section class="trip-column past-column"id ="pastColumn">
+      <section class="trip-column past-column" id="pastColumn">
         <h2>Past Trips</h2>
 
       </section>
 
-      <section class="trip-column upcoming-column" id ="upcomingColumn">
+      <section class="trip-column upcoming-column" id="upcomingColumn">
         <h2>Upcoming Trips</h2>
 
       </section>
 
-      <section class="trip-column pending-column"id ="pendingColumn">
+      <section class="trip-column pending-column" id="pendingColumn">
         <h2>Pending Trips</h2>
 
       </section>
 
     </div>
   </main>
+  <div class="modal micromodal-slide hidden" id="modal-1" aria-hidden="true">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header class="modal__header">
+          <h2 class="modal__title" id="modal-1-title">
+            Micromodal
+          </h2>
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main class="modal__content modal-1-window-1" id="modal-1-content">
+          <p>
+            Ready to book your next trip? Click Continue below to get started!
+          </p>
+          <button class="modal__btn modal__btn-primary" id="continueButtonOne">Continue</button>
+        </main>
+        <main class="modal__content modal-1-window-2 hidden" id="modal-1-content">
+
+            <p>Please Choose the Start Date for your Trip</p>
+
+          <section class="calendar-picker-section">
+            <div>
+              <input id="modalCalendarOne"></input>
+            </div>
+            <button class="modal__btn modal__btn-primary" id="continueButtonTwo">Continue</button>
+          </section>
+        </main>
+          <main class="modal__content modal-1-window-3 hidden" id="modal-1-content">
+            <div>
+              <input id='tripDuration'>Trip Duration in Days</input>
+            </div>
+          <button class="modal__btn modal__btn-primary" id="continueButtonThree">Continue</button>
+        </main>
+        <main class="modal__content modal-1-window-4 hidden" id="modal-1-content">
+          <p>How many travelers?</p>
+          <input type="text" id="travelerNumber">Enter the number of travelers here</input>
+          <button class="modal__btn modal__btn-primary" id="continueButtonFour">Continue</button>
+        </main>
+        <main class="modal__content modal-1-window-5 hidden" id="modal-1-content">
+          <p>What's the destination?</p>
+          <div class="dropdown">
+            <select name="destinations picker" id="destinationPicker">Choose Your Destination!
+              <option value="">--Please choose an option--</option>
+            </select>
+          </div>
+          <button class="modal__btn modal__btn-primary" id="finishButton">Finish</button>
+        </main>
+        <footer class="modal__footer">
+          <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
 
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
 </body>
+
 </html>

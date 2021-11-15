@@ -82,6 +82,13 @@ class TripsRepository {
     return this.destinationNames
   }
 
+  convertDestinationNameToID(name){
+    const foundDestination = this.destinations.find((destination) => {
+      return destination.destination === name
+    })
+    return foundDestination.id
+  }
+
 }
 
 
