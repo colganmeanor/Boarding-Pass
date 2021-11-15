@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { postTrip } from './scripts'
+// import { postTrip } from './scripts'
 // console.log(currentTraveler)
 
 // Query Selectors
@@ -123,14 +123,5 @@ const checkForPresentTrip = (tripRepo) => {
       })
     }
 
-
-
-    const sampleTrip = {id: 888, userID: 2, destinationID: 1, travelers: 2, date: '2020/04/04', duration: 3, status: 'pending', suggestedActivities: []}
-
-    const clickButton = (obj) => {
-      postTrip(obj)
-    }
-
-    // testButton.addEventListener('click', clickButton(sampleTrip))
 
     export default pageLoadDom
