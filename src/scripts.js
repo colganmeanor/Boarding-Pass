@@ -89,7 +89,7 @@ fetch('http://localhost:3001/api/v1/trips', {
     'Content-Type': 'application/json',
   }
 }).then(response => response.json())
-  .then(json => console.log(json))
+  .then(() => pageLoad())
 }
 
 

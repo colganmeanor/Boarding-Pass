@@ -27,11 +27,12 @@ const destinationButton = document.querySelector('#destinationButton')
 const tripDuration = document.querySelector('#tripDuration')
 const continueButtonFour = document.querySelector('#continueButtonFour')
 const destinationPicker = document.querySelector('#destinationPicker')
+const tripDatePicker = document.querySelector('#tripDatePicker')
 
 
-const startDate = datepicker('#modalCalendarOne', {
-  id: 1,
-})
+// const startDate = datepicker('#modalCalendarOne', {
+//   id: 1,
+// })
 
 
 
@@ -168,7 +169,7 @@ const submitForm = (currentTraveler, tripRepo) => {
     userID: currentTraveler.id,
     destinationID: tripRepo.convertDestinationNameToID(destinationPicker.value),
     travelers: travelerNumber.value,
-    date: dayjs(modalCalendarOne.value).format('YYYY/MM/DD'),
+    date: dayjs(tripDatePicker.value).format('YYYY/MM/DD'),
     duration: tripDuration.value,
     status: 'pending',
     suggestedActivities: [],
