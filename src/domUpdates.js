@@ -71,14 +71,19 @@ const checkForPresentTrip = (tripRepo) => {
     // console.log(tripRepo.presentTrips)
     presentTripWindow.innerHTML = ``
     tripRepo.presentTrips.forEach((trip) => {
-      presentTripWindow.innerHTML += `<article class="trip-card">
-            <p>Start Date: ${trip.startDate}</p>
-            <p>End Date: ${trip.endDate}</p>
-            <p>Destination: ${trip.destinationName}</p>
-            <p>Travelers: ${trip.travelers}</p>
-            <p>Status: ${trip.status}</p>
-            <p>Total Cost: $${trip.totalCost}</p>
-          </article>
+      presentTripWindow.innerHTML += `
+      <article class="trip-card">
+        <div class = "trip-card-header">
+        <h3>Destination: ${trip.destinationName}</h3>
+        </div>
+        <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7) ), url(${trip.image}); background-size: cover" class ="trip-card-body">
+          <p>Start Date: ${trip.startDate}</p>
+          <p>End Date: ${trip.endDate}</p>
+          <p>Travelers: ${trip.travelers}</p>
+          <p>Status: ${trip.status}</p>
+          <p>Total Cost: $${trip.totalCost}</p>
+        </div>
+      </article>
     `
     })
   }
@@ -88,14 +93,18 @@ const checkForPresentTrip = (tripRepo) => {
 const fillUpcomingColumn = (tripRepo) => {
   tripRepo.upcomingTrips.forEach((trip) => {
     upcomingColumn.innerHTML += `
-        <article class="trip-card">
-          <p>Start Date: ${trip.startDate}</p>
-          <p>End Date: ${trip.endDate}</p>
-          <p>Destination: ${trip.destinationName}</p>
-          <p>Travelers: ${trip.travelers}</p>
-          <p>Status: ${trip.status}</p>
-          <p>Total Cost: $${trip.totalCost}</p>
-        </article>
+<article class="trip-card">
+      <div class = "trip-card-header">
+      <h3>Destination: ${trip.destinationName}</h3>
+      </div>
+      <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7) ), url(${trip.image}); background-size: cover;" class ="trip-card-body">
+        <p>Start Date: ${trip.startDate}</p>
+        <p>End Date: ${trip.endDate}</p>
+        <p>Travelers: ${trip.travelers}</p>
+        <p>Status: ${trip.status}</p>
+        <p>Total Cost: $${trip.totalCost}</p>
+      </div>
+    </article>
     `
   })
 }
@@ -104,12 +113,16 @@ const fillPendingColumn = (tripRepo) => {
   tripRepo.pendingTrips.forEach((trip) => {
     pendingColumn.innerHTML += `
     <article class="trip-card">
-      <p>Start Date: ${trip.startDate}</p>
-      <p>End Date: ${trip.endDate}</p>
-      <p>Destination: ${trip.destinationName}</p>
-      <p>Travelers: ${trip.travelers}</p>
-      <p>Status: ${trip.status}</p>
-      <p>Total Cost: $${trip.totalCost}</p>
+      <div class = "trip-card-header">
+      <h3>Destination: ${trip.destinationName}</h3>
+      </div>
+    <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7) ), url(${trip.image}); background-size: cover;" class ="trip-card-body">
+        <p>Start Date: ${trip.startDate}</p>
+        <p>End Date: ${trip.endDate}</p>
+        <p>Travelers: ${trip.travelers}</p>
+        <p>Status: ${trip.status}</p>
+        <p>Total Cost: $${trip.totalCost}</p>
+      </div>
     </article>
     `
   })
@@ -118,14 +131,18 @@ const fillPendingColumn = (tripRepo) => {
 const fillPastColumn = (tripRepo) => {
   tripRepo.pastTrips.forEach((trip) => {
     pastColumn.innerHTML += `
-        <article class="trip-card">
-          <p>Start Date: ${trip.startDate}</p>
-          <p>End Date: ${trip.endDate}</p>
-          <p>Destination: ${trip.destinationName}</p>
-          <p>Travelers: ${trip.travelers}</p>
-          <p>Status: ${trip.status}</p>
-          <p>Total Cost: $${trip.totalCost}</p>
-        </article>
+    <article class="trip-card">
+      <div class = "trip-card-header">
+      <h3>Destination: ${trip.destinationName}</h3>
+      </div>
+      <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7) ), url(${trip.image}); background-size: cover;" class ="trip-card-body">
+        <p>Start Date: ${trip.startDate}</p>
+        <p>End Date: ${trip.endDate}</p>
+        <p>Travelers: ${trip.travelers}</p>
+        <p>Status: ${trip.status}</p>
+        <p>Total Cost: $${trip.totalCost}</p>
+      </div>
+    </article>
     `
   })
 }
@@ -140,25 +157,25 @@ const populateFormSelect = (tripRepo) => {
 const randomNum = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-return Math.floor(Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min) + min);
 }
 
 
 const submitForm = (currentTraveler, tripRepo) => {
   // let startDate = dayjs(modalCalendarOne.value).format('YYYY/MM/DD')
-    const tripData = {
-      id: randomNum(250, 15000),
-      userID: currentTraveler.id,
-      destinationID: tripRepo.convertDestinationNameToID(destinationPicker.value),
-      travelers: travelerNumber.value,
-      date: dayjs(modalCalendarOne.value).format('YYYY/MM/DD'),
-      duration: tripDuration.value,
-      status: 'pending',
-      suggestedActivities: [],
-    }
-    console.log(tripData)
-    postTrip(tripData)
+  const tripData = {
+    id: randomNum(250, 15000),
+    userID: currentTraveler.id,
+    destinationID: tripRepo.convertDestinationNameToID(destinationPicker.value),
+    travelers: travelerNumber.value,
+    date: dayjs(modalCalendarOne.value).format('YYYY/MM/DD'),
+    duration: tripDuration.value,
+    status: 'pending',
+    suggestedActivities: [],
   }
+  console.log(tripData)
+  postTrip(tripData)
+}
 
 const showHide = (elementOne, elementTwo) => {
   elementOne.classList.add('hidden')
@@ -190,4 +207,7 @@ continueButtonFour.addEventListener('click', () => {
 
 
 
-export { pageLoadDom, submitForm }
+export {
+  pageLoadDom,
+  submitForm
+}

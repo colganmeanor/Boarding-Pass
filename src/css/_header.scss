@@ -5,12 +5,23 @@ header {
   justify-content: space-between;
   align-content: flex-start;
   border: solid;
+  width: 100%;
 
-  button {
-    .add-new-trip-button {
-      // display:none;
+  .splash-message-section {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+
+    .splash-message {
+      font-size: large;
     }
 
+    button {
+      .add-new-trip-button {
+        width: auto;
+      }
+    }
   }
 
   .logo {
@@ -18,11 +29,8 @@ header {
     width: 13%;
   }
 
-  .splash-message-section {
+  .icon {
     height: auto;
-  }
-
-  .profile-icon-section {
-    height: auto;
+    width: 13%
   }
 }
