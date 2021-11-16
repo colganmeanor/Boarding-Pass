@@ -176,6 +176,7 @@ const submitForm = (currentTraveler, tripRepo) => {
   }
   console.log(tripData)
   postTrip(tripData)
+  resetForm()
 }
 
 const showHide = (elementOne, elementTwo) => {
@@ -208,7 +209,18 @@ continueButtonFour.addEventListener('click', () => {
 
 
 
-
+const resetForm = () => {
+  modalWindowOne.classList.remove('hidden')
+  modalWindowTwo.classList.add('hidden')
+  modalWindowThree.classList.add('hidden')
+  modalWindowFour.classList.add('hidden')
+  modalWindowFive.classList.add('hidden')
+  tripDuration.value = null
+  destinationPicker.value = null
+  tripDatePicker.value = null
+  travelerNumber.value = null
+  destinationPicker.innerHTML = ``
+}
 
 
 

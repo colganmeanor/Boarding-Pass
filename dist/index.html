@@ -114,20 +114,22 @@
       </div>
     </div>
   </div>
-  <section class="log-in-form hidden" id="logInForm">
+
+<main class="log-in-window">
+  <section class="log-in-form" id="logInForm">
     <div>
       <input type="text" placeholder="Enter Username" id="userName"></input>
     </div>
     <div>
-      <input type="text" placeholder="Enter Password" id="userPassWord"></input>
+      <input type="password" placeholder="Enter Password" id="userPassWord"></input>
     </div>
     <div>
-      <button class ="log-in-button" id="logInButton">Log In</button>
+      <button class ="log-in-button" id="logInButton" disabled>Log In</button>
+    </div>
+    <div id="errorSpace">
     </div>
   </section>
-
-
-
+</main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 

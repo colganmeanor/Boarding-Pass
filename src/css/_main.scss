@@ -1,4 +1,8 @@
 main {
+
+
+
+
   .present-trip-section {
     margin-bottom: 1%;
     display: flex;
@@ -66,7 +70,8 @@ main {
         display: flex;
         // border: black;
         border: black;
-        background: #7770de;
+        background: white;
+        color: black;
         flex-direction: column;
 
         .trip-card-header {
@@ -75,6 +80,7 @@ main {
 
         .trip-card-body {
           border: black;
+          color: white;
         }
       }
 
@@ -84,3 +90,20 @@ main {
     }
   }
 }
+
+
+    .log-in-window {
+      display: flex;
+      height: auto;
+      align-content: space-around;
+      margin-top: 15%;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: xx-large;
+
+    .log-in-form {
+      // border: solid black;
+    }
+  }
