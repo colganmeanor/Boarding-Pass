@@ -4,7 +4,6 @@ import MicroModal from 'micromodal';
 import {
   postTrip
 } from './scripts'
-import datepicker from 'js-datepicker'
 
 // console.log(currentTraveler)
 
@@ -30,9 +29,6 @@ const continueButtonFour = document.querySelector('#continueButtonFour')
 const destinationPicker = document.querySelector('#destinationPicker')
 
 
-const startDate = datepicker('#modalCalendarOne', {
-  id: 1,
-})
 
 
 
@@ -168,13 +164,14 @@ const submitForm = (currentTraveler, tripRepo) => {
     userID: currentTraveler.id,
     destinationID: tripRepo.convertDestinationNameToID(destinationPicker.value),
     travelers: travelerNumber.value,
-    date: dayjs(modalCalendarOne.value).format('YYYY/MM/DD'),
+    date: dayjs(tripDatePicker.value).format('YYYY/MM/DD'),
     duration: tripDuration.value,
     status: 'pending',
     suggestedActivities: [],
   }
   console.log(tripData)
   postTrip(tripData)
+  resetForm()
 }
 
 const showHide = (elementOne, elementTwo) => {
@@ -182,7 +179,11 @@ const showHide = (elementOne, elementTwo) => {
   elementTwo.classList.remove('hidden')
 }
 
-
+const clearColumns = () => {
+  upcomingColumnContainer.innerHTML = ``
+  pendingColumnContainer.innerHTML = ``
+  pastColumnContainer.innerHTML = ``
+}
 
 continueButtonOne.addEventListener('click', () => {
   showHide(modalWindowOne, modalWindowTwo);
@@ -201,6 +202,21 @@ continueButtonFour.addEventListener('click', () => {
 //   destinationContent.classList.toggle('show')
 // })
 
+
+
+const resetForm = () => {
+  modalWindowOne.classList.remove('hidden')
+  modalWindowTwo.classList.add('hidden')
+  modalWindowThree.classList.add('hidden')
+  modalWindowFour.classList.add('hidden')
+  modalWindowFive.classList.add('hidden')
+  tripDuration.value = null
+  destinationPicker.value = null
+  tripDatePicker.value = null
+  travelerNumber.value = null
+  destinationPicker.innerHTML = ``
+  tripEstimation.innerHTML = ``
+}
 
 
 
