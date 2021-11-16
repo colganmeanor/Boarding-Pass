@@ -24,18 +24,6 @@ let tripRepo
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
-// let dayJSTest = dayjs(today).subtract(2, 'days').format('YYYY/MM/DD')
-// console.log(today)
-// console.log(dayJSTest)
-
-// let testDate = '04/03/2019'
-//
-// // let testResult = dayjs(testDate).from(dayjs(today))
-// // console.log(testResult)
-// console.log(today < testDate)
-
-
-
 
 // Functions
 
@@ -50,9 +38,6 @@ const pageLoad = () => {
   })
 }
 
-
-// generateTraveler(values[0])
-// generateTripRepo(values[1], values[2])
 
 const generateClasses = (travelerData, tripData, destinationData) => {
   generateTraveler(travelerData);
@@ -85,23 +70,45 @@ fetch('http://localhost:3001/api/v1/trips', {
   .then(json => console.log(json))
 }
 
-// const testButton = document.querySelector('#addNewTripButton')
-// testButton.addEventListener('click', postTrip(sampleTrip));
+
 
 pageLoad()
-// postTrip(sampleTrip)
 
-// testButton.addEventListener('click', () => {
-//   postTrip(sampleTrip)
-// })
 
 const finishButton = document.querySelector('#finishButton')
+const destinationPicker = document.querySelector('#destinationPicker')
+const tripEstimation = document.querySelector('#tripEstimation')
 
 // Event Listeners
+
+
+
 finishButton.addEventListener('click', () => {
   submitForm(currentTraveler, tripRepo)
   MicroModal.close('modal-1')
+  window.location.reload();
 })
+
+
+destinationPicker.addEventListener('input', () => {
+  calculateProjectedTotal(tripRepo)
+})
+
+
+
+const calculateProjectedTotal = (tripRepo) => {
+  const foundDestination = tripRepo.destinations.find((destination) => {
+    return destination.destination === destinationPicker.value
+  })
+  let lodgingCost = ((foundDestination.estimatedLodgingCostPerDay * tripDuration.value) * travelerNumber.value)
+  let flightCost = foundDestination.estimatedFlightCostPerPerson * travelerNumber.value
+  let tripCost = lodgingCost + flightCost
+  let agentFee = tripCost / 10
+  let totalTripCost = tripCost + agentFee
+  tripEstimation.innerHTML = `Estimated Trip Cost: $${totalTripCost}`
+}
+
+
 
 
 export { currentTraveler, tripRepo, today, postTrip }

@@ -28,8 +28,9 @@ class Trip {
     const destinationResult = array.find((item) => {
       return item.id === this.destinationID
     })
-    let tripCost = (destinationResult.estimatedLodgingCostPerDay +
-      destinationResult.estimatedFlightCostPerPerson) * this.travelers
+    let lodgingCost = ((destinationResult.estimatedLodgingCostPerDay * this.duration) * this.travelers)
+    let flightCost = destinationResult.estimatedFlightCostPerPerson * this.travelers
+    let tripCost = lodgingCost + flightCost
     let agentFee = tripCost / 10
     this.totalCost = tripCost + agentFee
 }
