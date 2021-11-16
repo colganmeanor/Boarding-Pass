@@ -11,7 +11,6 @@ import datepicker from 'js-datepicker'
 // Query Selectors
 
 const headerMessage = document.querySelector('#splashMessage')
-const presentColumn = document.querySelector('#presentColumn')
 const upcomingColumn = document.querySelector('#upcomingColumn')
 const pendingColumn = document.querySelector('#pendingColumn')
 const pastColumn = document.querySelector('#pastColumn')
@@ -39,6 +38,7 @@ const startDate = datepicker('#modalCalendarOne', {
 
 
 const pageLoadDom = (currentTraveler, tripRepo) => {
+  clearColumns()
   updateHeaderMessage(currentTraveler, tripRepo)
   populateColumns(tripRepo)
   populateFormSelect(tripRepo)
@@ -64,7 +64,7 @@ const checkForPresentTrip = (tripRepo) => {
     presentTripWindow.innerHTML = `
       <article class="trip-card">
       <p>It seems we don't have any current trips logged for you, click the button below to get started!</p>
-      <button class="add-new-trip-button" id="addNewTripButtonBody">Add New Trip</button>
+      <button class="add-new-trip-button" id="addNewTripButtonBody" data-micromodal-trigger="modal-1">Add New Trip</button>
       </article>`;
 
   } else {
@@ -182,7 +182,11 @@ const showHide = (elementOne, elementTwo) => {
   elementTwo.classList.remove('hidden')
 }
 
-
+const clearColumns = () => {
+  upcomingColumn.innerHTML = ``
+  pendingColumn.innerHTML = ``
+  pastColumn.innerHTML = ``
+}
 
 continueButtonOne.addEventListener('click', () => {
   showHide(modalWindowOne, modalWindowTwo);
