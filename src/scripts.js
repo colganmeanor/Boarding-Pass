@@ -9,6 +9,7 @@ import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
   from './apiCalls';
 import {pageLoadDom, submitForm} from './domUpdates'
 import dayjs from 'dayjs';
+import MicroModal from 'micromodal';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
@@ -28,13 +29,31 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // Functions
 
+const logInForm = document.querySelector('#logInForm')
+const mainPage = document.querySelector('#mainPage')
+
+const showLogInForm = () => {
+  logInForm.classList.remove('hidden')
+}
 
 
-const pageLoad = () => {
-  Promise.all([fetchSingleTraveler, fetchTrips, fetchDestinations]).then(values => {
+
+const logIn = (num) => {
+  Promise.all([fetchSingleTraveler(num)]).then(values => {
     return Promise.all(values.map(result => result.json()));
   }).then(values => {
-    generateClasses(values[0], values[1], values[2])
+    generateTraveler(values[0])
+    pageLoad()
+    mainPage.classList.remove('hidden')
+    logInForm.classList.add('hidden')
+})
+}
+
+const pageLoad = () => {
+  Promise.all([fetchTrips, fetchDestinations]).then(values => {
+    return Promise.all(values.map(result => result.json()));
+  }).then(values => {
+    generateTripRepo(values[0], values[1])
     pageLoadDom(currentTraveler, tripRepo)
   })
 }
@@ -48,10 +67,12 @@ const generateClasses = (travelerData, tripData, destinationData) => {
 
 const generateTraveler = (data) => {
   currentTraveler = new Traveler(data)
+  console.log(currentTraveler)
 }
 
 const generateTripRepo = (tripData, destinationData) => {
   tripRepo = new TripsRepository(tripData, destinationData)
+  console.log(tripRepo)
   tripRepo.createTrips()
   tripRepo.findUserTrips(currentTraveler.id)
   tripRepo.totalTripCostPerUser()
@@ -72,8 +93,7 @@ fetch('http://localhost:3001/api/v1/trips', {
 }
 
 
-
-pageLoad()
+showLogInForm()
 
 
 const finishButton = document.querySelector('#finishButton')
@@ -82,12 +102,16 @@ const tripEstimation = document.querySelector('#tripEstimation')
 
 // Event Listeners
 
+logInButton.addEventListener('click', () => {
+  let userNum = userName.value.replace(/[^0-9]/g,'')
+  logIn(userNum)
+})
 
 
 finishButton.addEventListener('click', () => {
   submitForm(currentTraveler, tripRepo)
   MicroModal.close('modal-1')
-  window.location.reload();
+  pageLoad()
 })
 
 
