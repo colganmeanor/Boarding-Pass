@@ -31,7 +31,7 @@ const destinationPicker = document.querySelector('#destinationPicker')
 
 
 const startDate = datepicker('#modalCalendarOne', {
-  id: 1
+  id: 1,
 })
 
 
@@ -40,11 +40,9 @@ const startDate = datepicker('#modalCalendarOne', {
 
 const pageLoadDom = (currentTraveler, tripRepo) => {
   updateHeaderMessage(currentTraveler, tripRepo)
-  // console.log(tripRepo)
   populateColumns(tripRepo)
   populateFormSelect(tripRepo)
   MicroModal.init();
-  // MicroModal.close('modal-1')
 }
 
 const updateHeaderMessage = (currentTraveler, tripRepo) => {
@@ -54,7 +52,6 @@ const updateHeaderMessage = (currentTraveler, tripRepo) => {
 
 const populateColumns = (tripRepo) => {
   checkForPresentTrip(tripRepo)
-  // console.log(tripRepo)
   fillUpcomingColumn(tripRepo)
   fillPendingColumn(tripRepo)
   fillPastColumn(tripRepo)
@@ -87,21 +84,6 @@ const checkForPresentTrip = (tripRepo) => {
   }
 }
 
-
-// const fillPresentColumn = (tripRepo) => {
-//   tripRepo.presentTrips.forEach((trip) => {
-//     presentColumn.innerHTML += `
-//     <article class="trip-card">
-//       <p>Date: ${trip.date}</p>
-//       <p>Duration: ${trip.duration}</p>
-//       <p>Destination: ${trip.destinationName}</p>
-//       <p>Travelers: ${trip.travelers}</p>
-//       <p>Status: ${trip.status}</p>
-//       <p>Total Cost: $${trip.totalCost}</p>
-//     </article>
-//     `
-//   })
-// }
 
 const fillUpcomingColumn = (tripRepo) => {
   tripRepo.upcomingTrips.forEach((trip) => {
@@ -161,13 +143,9 @@ const randomNum = (min, max) => {
 return Math.floor(Math.random() * (max - min) + min);
 }
 
-// console.log(randomNum(200, 20000))
 
 const submitForm = (currentTraveler, tripRepo) => {
-  let startDate = dayjs(modalCalendarOne.value).format('YYYY/MM/DD')
-
-
-
+  // let startDate = dayjs(modalCalendarOne.value).format('YYYY/MM/DD')
     const tripData = {
       id: randomNum(250, 15000),
       userID: currentTraveler.id,
@@ -187,14 +165,10 @@ const showHide = (elementOne, elementTwo) => {
   elementTwo.classList.remove('hidden')
 }
 
-// const micromodalWindow = () => {
-//   MicroModal.open('modal-1')
-// }
 
 
 continueButtonOne.addEventListener('click', () => {
   showHide(modalWindowOne, modalWindowTwo);
-  // modalWindowTwo.innerHTML += `<input type = 'text'>picker</input>`
 })
 continueButtonTwo.addEventListener('click', () => {
   showHide(modalWindowTwo, modalWindowThree)
@@ -209,6 +183,8 @@ continueButtonFour.addEventListener('click', () => {
 // destinationButton.addEventListener('click', () => {
 //   destinationContent.classList.toggle('show')
 // })
+
+
 
 
 
