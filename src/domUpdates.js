@@ -93,7 +93,7 @@ const checkForPresentTrip = (tripRepo) => {
 
 const fillUpcomingColumn = (tripRepo) => {
   tripRepo.upcomingTrips.forEach((trip) => {
-    upcomingColumn.innerHTML += `
+    upcomingColumnContainer.innerHTML += `
 <article class="trip-card">
       <div class = "trip-card-header">
       <h3>Destination: ${trip.destinationName}</h3>
@@ -112,7 +112,7 @@ const fillUpcomingColumn = (tripRepo) => {
 
 const fillPendingColumn = (tripRepo) => {
   tripRepo.pendingTrips.forEach((trip) => {
-    pendingColumn.innerHTML += `
+    pendingColumnContainer.innerHTML += `
     <article class="trip-card">
       <div class = "trip-card-header">
       <h3>Destination: ${trip.destinationName}</h3>
@@ -131,7 +131,7 @@ const fillPendingColumn = (tripRepo) => {
 
 const fillPastColumn = (tripRepo) => {
   tripRepo.pastTrips.forEach((trip) => {
-    pastColumn.innerHTML += `
+    pastColumnContainer.innerHTML += `
     <article class="trip-card">
       <div class = "trip-card-header">
       <h3>Destination: ${trip.destinationName}</h3>
@@ -184,9 +184,9 @@ const showHide = (elementOne, elementTwo) => {
 }
 
 const clearColumns = () => {
-  upcomingColumn.innerHTML = ``
-  pendingColumn.innerHTML = ``
-  pastColumn.innerHTML = ``
+  upcomingColumnContainer.innerHTML = ``
+  pendingColumnContainer.innerHTML = ``
+  pastColumnContainer.innerHTML = ``
 }
 
 continueButtonOne.addEventListener('click', () => {
