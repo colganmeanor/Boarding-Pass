@@ -220,6 +220,7 @@ const resetForm = () => {
   tripDatePicker.value = null
   travelerNumber.value = null
   destinationPicker.innerHTML = ``
+  tripEstimation.innerHTML = ``
 }
 
 

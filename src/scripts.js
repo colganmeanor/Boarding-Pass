@@ -53,7 +53,7 @@ const pageLoad = () => {
   console.log(tripRepo)
   setTimeout(function() {
     pageLoadDom(currentTraveler, tripRepo)
-  }, 100)
+  }, 1000)
 
 })
 }
