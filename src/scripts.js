@@ -39,24 +39,25 @@ const showLogInForm = () => {
 
 
 const logIn = (num) => {
-  Promise.all([fetchSingleTraveler(num)]).then(values => {
-    return Promise.all(values.map(result => result.json()));
-  }).then(values => {
-    generateTraveler(values[0])
-    pageLoad()
-    mainPage.classList.remove('hidden')
-    logInForm.classList.add('hidden')
+    fetchSingleTraveler(num).then(response => response.json()).then(json => generateTraveler(json)).then(setTimeout(function () {
+      pageLoad()
+      mainPage.classList.remove('hidden')
+      logInForm.classList.add('hidden')
+    }, 100))
+}
+
+
+const pageLoad = () => {
+  Promise.all([fetchTrips(), fetchDestinations()]).then(response => {
+  generateTripRepo(response[0], response[1])
+  console.log(tripRepo)
+  setTimeout(function() {
+    pageLoadDom(currentTraveler, tripRepo)
+  }, 1000)
+
 })
 }
 
-const pageLoad = () => {
-  Promise.all([fetchTrips, fetchDestinations]).then(values => {
-    return Promise.all(values.map(result => result.json()));
-  }).then(values => {
-    generateTripRepo(values[0], values[1])
-    pageLoadDom(currentTraveler, tripRepo)
-  })
-}
 
 
 const generateClasses = (travelerData, tripData, destinationData) => {
@@ -72,7 +73,7 @@ const generateTraveler = (data) => {
 
 const generateTripRepo = (tripData, destinationData) => {
   tripRepo = new TripsRepository(tripData, destinationData)
-  console.log(tripRepo)
+  // console.log(tripRepo)
   tripRepo.createTrips()
   tripRepo.findUserTrips(currentTraveler.id)
   tripRepo.totalTripCostPerUser()
@@ -88,27 +89,45 @@ fetch('http://localhost:3001/api/v1/trips', {
   headers: {
     'Content-Type': 'application/json',
   }
-}).then(response => response.json())
-  .then(() => pageLoad())
+}).then(response => response.json());
+  pageLoad();
 }
 
 
-showLogInForm()
+// showLogInForm()
 
 
 const finishButton = document.querySelector('#finishButton')
 const destinationPicker = document.querySelector('#destinationPicker')
 const tripEstimation = document.querySelector('#tripEstimation')
+const clickHereToLogin = document.querySelector('#clickHereToLogin')
+const errorSpace = document.querySelector('#errorSpace')
+const userName = document.querySelector('#userName')
 
 // Event Listeners
 
-logInButton.addEventListener('click', () => {
-  let userNum = userName.value.replace(/[^0-9]/g,'')
-  logIn(userNum)
+userName.addEventListener('input', () => {
+  logInButton.disabled = false
 })
+
+logInButton.addEventListener('click', () => {
+  checkCredentials()
+  // MicroModal.close('modal-2')
+})
+
+const checkCredentials = () => {
+  if (userName.value.includes('traveler') && userPassWord.value === 'travel'){
+    let userNum = userName.value.replace(/[^0-9]/g,'')
+    logIn(userNum)
+  } else {
+    errorSpace.innerHTML = `<p>Looks like the username or password wasn't quite right. Wanna try again?</p>`
+  }
+}
+
 
 
 finishButton.addEventListener('click', () => {
+
   submitForm(currentTraveler, tripRepo)
   MicroModal.close('modal-1')
   pageLoad()
@@ -119,6 +138,10 @@ destinationPicker.addEventListener('input', () => {
   calculateProjectedTotal(tripRepo)
 })
 
+
+// clickHereToLogin.addEventListener('click', () => {
+//   MicroModal.open('modal-2')
+// })
 
 
 const calculateProjectedTotal = (tripRepo) => {

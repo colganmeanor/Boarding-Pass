@@ -1,6 +1,6 @@
-const fetchTravelers = fetch('http://localhost:3001/api/v1/travelers')
-const fetchTrips = fetch('http://localhost:3001/api/v1/trips')
-const fetchDestinations = fetch('http://localhost:3001/api/v1/destinations')
+// const fetchTravelers = fetch('http://localhost:3001/api/v1/travelers')
+// const fetchTrips = fetch('http://localhost:3001/api/v1/trips')
+// const fetchDestinations = fetch('http://localhost:3001/api/v1/destinations')
 // const fetchSingleTraveler = fetch('http://localhost:3001/api/v1/travelers/2')
 
 const fetchSingleTraveler = (num) => {
@@ -9,7 +9,15 @@ const fetchSingleTraveler = (num) => {
    // .then(json => console.log(json))
 }
 
+const fetchTrips = () => {
+  return fetch('http://localhost:3001/api/v1/trips')
+  .then(response => response.json())
+}
+
+const fetchDestinations = () => {
+  return fetch("http://localhost:3001/api/v1/destinations")
+  .then(response => response.json())
+}
 
 
-
-module.exports = { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations };
+module.exports = { fetchSingleTraveler, fetchTrips, fetchDestinations };
