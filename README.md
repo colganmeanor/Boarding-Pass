@@ -22,7 +22,7 @@ Mod2 2108 FE
   - clone this repo: [here](https://github.com/colganmeanor/Boarding-Pass)
    - On the command line, type: **$ npm install**
    - On the command line, type: **$ npm start**
-   - Visit
+   - Visit (http://localhost:8080/) in your browser. 
 
 ## Project Specs
    - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html)
