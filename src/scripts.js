@@ -119,6 +119,7 @@ const checkCredentials = () => {
   if (userName.value.includes('traveler') && userPassWord.value === 'travel'){
     let userNum = userName.value.replace(/[^0-9]/g,'')
     logIn(userNum)
+    addNewTripButton.classList.remove('hidden')
   } else {
     errorSpace.innerHTML = `<p>Looks like the username or password wasn't quite right. Wanna try again?</p>`
   }

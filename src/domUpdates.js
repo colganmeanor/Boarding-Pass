@@ -193,14 +193,26 @@ const clearColumns = () => {
 continueButtonOne.addEventListener('click', () => {
   showHide(modalWindowOne, modalWindowTwo);
 })
+tripDatePicker.addEventListener('input', () => {
+  continueButtonTwo.disabled = false;
+})
 continueButtonTwo.addEventListener('click', () => {
   showHide(modalWindowTwo, modalWindowThree)
+})
+tripDuration.addEventListener('input', () => {
+  continueButtonThree.disabled = false;
 })
 continueButtonThree.addEventListener('click', () => {
   showHide(modalWindowThree, modalWindowFour)
 })
+travelerNumber.addEventListener('input', () => {
+  continueButtonFour.disabled = false;
+})
 continueButtonFour.addEventListener('click', () => {
   showHide(modalWindowFour, modalWindowFive)
+})
+destinationPicker.addEventListener('input', () => {
+  finishButton.disabled = false;
 })
 
 // destinationButton.addEventListener('click', () => {
@@ -210,11 +222,12 @@ continueButtonFour.addEventListener('click', () => {
 
 
 const resetForm = () => {
-  modalWindowOne.classList.remove('hidden')
-  modalWindowTwo.classList.add('hidden')
-  modalWindowThree.classList.add('hidden')
-  modalWindowFour.classList.add('hidden')
-  modalWindowFive.classList.add('hidden')
+  disableModalButtons()
+  hideModalWindows()
+  resetModalInputs()
+}
+
+const resetModalInputs = () => {
   tripDuration.value = null
   destinationPicker.value = null
   tripDatePicker.value = null
@@ -223,6 +236,20 @@ const resetForm = () => {
   tripEstimation.innerHTML = ``
 }
 
+const hideModalWindows = () => {
+  modalWindowOne.classList.remove('hidden')
+  modalWindowTwo.classList.add('hidden')
+  modalWindowThree.classList.add('hidden')
+  modalWindowFour.classList.add('hidden')
+  modalWindowFive.classList.add('hidden')
+}
+
+const disableModalButtons = () => {
+  continueButtonTwo.disabled = true;
+  continueButtonThree.disabled = true;
+  continueButtonFour.disabled = true;
+  finishButton.disabled = true;
+}
 
 
 export {
