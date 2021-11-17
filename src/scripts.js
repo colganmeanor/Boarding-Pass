@@ -5,16 +5,23 @@
 import Traveler from './traveler'
 import Trip from './trip'
 import TripsRepository from './trips-repo'
-import { fetchTravelers, fetchSingleTraveler, fetchTrips, fetchDestinations }
-  from './apiCalls';
-import {pageLoadDom, submitForm} from './domUpdates'
+import {
+  fetchSingleTraveler,
+  fetchTrips,
+  fetchDestinations
+}
+from './apiCalls';
+import {
+  pageLoadDom,
+  submitForm
+} from './domUpdates'
 import dayjs from 'dayjs';
 import MicroModal from 'micromodal';
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
 
 import './css/base.scss';
-import './images/turing-logo.png'
+import './images/boarding-pass.jpg'
 import './images/user.png'
 
 
@@ -23,9 +30,6 @@ import './images/user.png'
 const today = '04/03/2020'
 let currentTraveler
 let tripRepo
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
 
 // Functions
 
@@ -39,41 +43,37 @@ const showLogInForm = () => {
 
 
 const logIn = (num) => {
-    fetchSingleTraveler(num).then(response => response.json()).then(json => generateTraveler(json)).then(setTimeout(function () {
-      pageLoad()
-      mainPage.classList.remove('hidden')
-      logInForm.classList.add('hidden')
-    }, 100))
+  fetchSingleTraveler(num).then(response => response.json()).then(json => generateTraveler(json)).then(setTimeout(function() {
+    pageLoad()
+    mainPage.classList.remove('hidden')
+    logInForm.classList.add('hidden')
+  }, 100))
 }
 
 
 const pageLoad = () => {
   Promise.all([fetchTrips(), fetchDestinations()]).then(response => {
-  generateTripRepo(response[0], response[1])
-  console.log(tripRepo)
-  setTimeout(function() {
-    pageLoadDom(currentTraveler, tripRepo)
-  }, 1000)
+    generateTripRepo(response[0], response[1])
+    setTimeout(function() {
+      pageLoadDom(currentTraveler, tripRepo)
+    }, 1000)
 
-})
+  })
 }
 
 
 
 const generateClasses = (travelerData, tripData, destinationData) => {
   generateTraveler(travelerData);
-  // console.log(currentTraveler)
   generateTripRepo(tripData, destinationData)
 }
 
 const generateTraveler = (data) => {
   currentTraveler = new Traveler(data)
-  console.log(currentTraveler)
 }
 
 const generateTripRepo = (tripData, destinationData) => {
   tripRepo = new TripsRepository(tripData, destinationData)
-  // console.log(tripRepo)
   tripRepo.createTrips()
   tripRepo.findUserTrips(currentTraveler.id)
   tripRepo.totalTripCostPerUser()
@@ -83,18 +83,15 @@ const generateTripRepo = (tripData, destinationData) => {
 
 
 const postTrip = (data) => {
-fetch('http://localhost:3001/api/v1/trips', {
-  method: 'POST',
-  body: JSON.stringify(data),
-  headers: {
-    'Content-Type': 'application/json',
-  }
-}).then(response => response.json());
+  fetch('http://localhost:3001/api/v1/trips', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  }).then(response => response.json());
   pageLoad();
 }
-
-
-// showLogInForm()
 
 
 const finishButton = document.querySelector('#finishButton')
@@ -104,7 +101,6 @@ const clickHereToLogin = document.querySelector('#clickHereToLogin')
 const errorSpace = document.querySelector('#errorSpace')
 const userName = document.querySelector('#userName')
 
-// Event Listeners
 
 userName.addEventListener('input', () => {
   logInButton.disabled = false
@@ -112,12 +108,11 @@ userName.addEventListener('input', () => {
 
 logInButton.addEventListener('click', () => {
   checkCredentials()
-  // MicroModal.close('modal-2')
 })
 
 const checkCredentials = () => {
-  if (userName.value.includes('traveler') && userPassWord.value === 'travel'){
-    let userNum = userName.value.replace(/[^0-9]/g,'')
+  if (userName.value.includes('traveler') && userPassWord.value === 'travel') {
+    let userNum = userName.value.replace(/[^0-9]/g, '')
     logIn(userNum)
     addNewTripButton.classList.remove('hidden')
   } else {
@@ -140,11 +135,6 @@ destinationPicker.addEventListener('input', () => {
 })
 
 
-// clickHereToLogin.addEventListener('click', () => {
-//   MicroModal.open('modal-2')
-// })
-
-
 const calculateProjectedTotal = (tripRepo) => {
   const foundDestination = tripRepo.destinations.find((destination) => {
     return destination.destination === destinationPicker.value
@@ -160,4 +150,9 @@ const calculateProjectedTotal = (tripRepo) => {
 
 
 
-export { currentTraveler, tripRepo, today, postTrip }
+export {
+  currentTraveler,
+  tripRepo,
+  today,
+  postTrip
+}
