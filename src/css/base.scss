@@ -3,17 +3,21 @@
 @import '_header';
 @import '_main';
 @import '_modal';
-@import '_datepicker';
-// @import '~js-datepicker/src/datepicker'
-// @import '~js-datepicker/dist/datepicker.min.css'
 
 body {
   // border: solid green;
   min-height: 100vh;
   min-width: 100vh;
   background: #b5ddfa;
+  font-family: 'Source Sans Pro', sans-serif;
 }
-
+@media (max-width: 700px) {
+  body {
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+  }
+}
 
 .hidden {
   display: none;

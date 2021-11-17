@@ -35,3 +35,83 @@ header {
     width: 13%
   }
 }
+
+@media (max-width: 1200px) {
+  header {
+    background: $header-background;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    border: solid;
+    width: 100%;
+
+    .splash-message-section {
+      display: flex;
+      height: auto;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      .splash-message {
+        font-size: large;
+      }
+
+      button {
+        .add-new-trip-button {
+          width: auto;
+        }
+      }
+    }
+
+    .logo {
+      height: auto;
+      width: 13%;
+    }
+
+    .icon {
+      height: auto;
+      width: 13%
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    background: $header-background;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    border: solid;
+    width: 62%;
+
+    .splash-message-section {
+      display: flex;
+      height: auto;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      .splash-message {
+        font-size: large;
+      }
+
+      button {
+        .add-new-trip-button {
+          width: auto;
+        }
+      }
+    }
+
+    .logo {
+      height: auto;
+      width: 13%;
+    }
+
+    .icon {
+      height: auto;
+      width: 13%
+    }
+  }
+}
