@@ -1,19 +1,19 @@
 import dayjs from 'dayjs';
 
 class Trip {
-  constructor(data){
+  constructor(data) {
     this.id = data.id,
-    this.userID = data.userID,
-    this.destinationID = data.destinationID,
-    this.destinationName = undefined,
-    this.image = undefined,
-    this.imageAlt = undefined,
-    this.travelers = data.travelers,
-    this.startDate = dayjs(data.date).format('MM/DD/YYYY'),
-    this.duration = data.duration,
-    this.endDate = undefined,
-    this.status = data.status,
-    this.suggestedActivities = data.suggestedActivities
+      this.userID = data.userID,
+      this.destinationID = data.destinationID,
+      this.destinationName = undefined,
+      this.image = undefined,
+      this.imageAlt = undefined,
+      this.travelers = data.travelers,
+      this.startDate = dayjs(data.date).format('MM/DD/YYYY'),
+      this.duration = data.duration,
+      this.endDate = undefined,
+      this.status = data.status,
+      this.suggestedActivities = data.suggestedActivities
     this.totalCost = 0
   }
 
@@ -24,7 +24,7 @@ class Trip {
     this.destinationName = destinationResult.destination
   }
 
-  calculateTotalCost(array){
+  calculateTotalCost(array) {
     const destinationResult = array.find((item) => {
       return item.id === this.destinationID
     })
@@ -33,9 +33,9 @@ class Trip {
     let tripCost = lodgingCost + flightCost
     let agentFee = tripCost / 10
     this.totalCost = tripCost + agentFee
-}
+  }
 
-  grabDestinationImages(array){
+  grabDestinationImages(array) {
     const destinationResult = array.find((item) => {
       return item.id === this.destinationID
     })
@@ -43,15 +43,15 @@ class Trip {
     this.image = destinationResult.image;
   }
 
-  calculateEndDate(){
+  calculateEndDate() {
     this.endDate = dayjs(this.startDate).add(this.duration, 'days').format('MM/DD/YYYY')
   }
 
   siphonDestinationData(array) {
-      this.convertDestinationID(array)
-      this.calculateTotalCost(array)
-      this.grabDestinationImages(array)
-      this.calculateEndDate()
+    this.convertDestinationID(array)
+    this.calculateTotalCost(array)
+    this.grabDestinationImages(array)
+    this.calculateEndDate()
   }
 
 

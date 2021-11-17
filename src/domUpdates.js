@@ -1,12 +1,8 @@
 import dayjs from 'dayjs';
 import MicroModal from 'micromodal';
-// var MicroModal = require('micromodal')
 import {
   postTrip
 } from './scripts'
-import datepicker from 'js-datepicker'
-
-// console.log(currentTraveler)
 
 // Query Selectors
 
@@ -28,13 +24,6 @@ const tripDuration = document.querySelector('#tripDuration')
 const continueButtonFour = document.querySelector('#continueButtonFour')
 const destinationPicker = document.querySelector('#destinationPicker')
 const tripDatePicker = document.querySelector('#tripDatePicker')
-
-
-// const startDate = datepicker('#modalCalendarOne', {
-//   id: 1,
-// })
-
-
 
 
 
@@ -69,7 +58,6 @@ const checkForPresentTrip = (tripRepo) => {
       </article>`;
 
   } else {
-    // console.log(tripRepo.presentTrips)
     presentTripWindow.innerHTML = ``
     tripRepo.presentTrips.forEach((trip) => {
       presentTripWindow.innerHTML += `
@@ -163,7 +151,6 @@ const randomNum = (min, max) => {
 
 
 const submitForm = (currentTraveler, tripRepo) => {
-  // let startDate = dayjs(modalCalendarOne.value).format('YYYY/MM/DD')
   const tripData = {
     id: randomNum(250, 15000),
     userID: currentTraveler.id,
@@ -174,7 +161,6 @@ const submitForm = (currentTraveler, tripRepo) => {
     status: 'pending',
     suggestedActivities: [],
   }
-  console.log(tripData)
   postTrip(tripData)
   resetForm()
 }
@@ -214,11 +200,6 @@ continueButtonFour.addEventListener('click', () => {
 destinationPicker.addEventListener('input', () => {
   finishButton.disabled = false;
 })
-
-// destinationButton.addEventListener('click', () => {
-//   destinationContent.classList.toggle('show')
-// })
-
 
 
 const resetForm = () => {
