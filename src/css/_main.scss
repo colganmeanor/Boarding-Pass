@@ -1,8 +1,4 @@
 main {
-
-
-
-
   .present-trip-section {
     margin-bottom: 1%;
     display: flex;
@@ -91,27 +87,199 @@ main {
   }
 }
 
+.log-in-window {
+  display: flex;
+  height: auto;
+  align-content: space-around;
+  margin-top: 15%;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: xx-large;
 
-    .log-in-window {
-      display: flex;
-      height: auto;
-      align-content: space-around;
-      margin-top: 15%;
-      justify-content: space-between;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      font-size: xx-large;
+  .log-in-form {
+    // border: solid black;
+  }
+}
+
+button {
+  background-color: #415ff3;
+  color: white;
+  border-radius: 10%;
+  border: black;
+  width: fit-content;
+}
+@media (max-width: 1200px) {
+  // main {
+  //   width: 30%;
+  .log-in-window {
+    display: flex;
+    height: auto;
+    align-content: space-around;
+    margin-top: 15%;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: xx-large;
 
     .log-in-form {
       // border: solid black;
     }
   }
 
-  button {
-   background-color: #415ff3;
-   color: white;
-   border-radius: 10%;
-   border: black;
-   width: fit-content;
+  .present-trip-section {
+    margin-bottom: 1%;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    background: #b5ddfa;
+    border-bottom: solid;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    .present-trip-title {
+      align-items: center;
+    }
+
+    .present-trip-window {
+      height: 40%;
+      width: auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+
+      .trip-card {
+        text-align: center;
+        border: solid black;
+        background: #7770de;
+        color: white;
+        margin-bottom: 1%;
+
+        .trip-card-header {
+          border: black;
+        }
+
+        .trip-card-body {
+          border: black;
+        }
+      }
+    }
+  }
 }
+// }
+@media (max-width: 700px) {
+  // main {
+  .log-in-window {
+    display: flex;
+    height: auto;
+    align-content: space-around;
+    margin-top: 15%;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: xx-large;
+    width: 66%;
+
+    .log-in-form {
+      // border: solid black;
+    }
+  }
+
+  main {
+    .present-trip-section {
+      margin-bottom: 1%;
+      display: flex;
+      flex-direction: column;
+      align-content: space-around;
+      background: #b5ddfa;
+      border-bottom: solid;
+      justify-content: flex-start;
+      align-items: stretch;
+
+      .present-trip-title {
+        align-items: center;
+      }
+
+      .present-trip-window {
+        height: auto;
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .trip-card {
+          text-align: center;
+          border: solid black;
+          background: #7770de;
+          color: white;
+          margin-bottom: 1%;
+          width: 30%;
+
+          .trip-card-header {
+            border: black;
+          }
+
+          .trip-card-body {
+            border: black;
+          }
+        }
+      }
+    }
+
+
+  .column-container {
+    background: #b5ddfa;
+    display: flex;
+    // border: solid yellow;
+    justify-content: space-around;
+    flex-direction: column;
+    min-height: 100 vh;
+    width: auto;
+    align-items: center;
+
+    .trip-column {
+      background: linear-gradient(to top, #00c9ff, #92fe9d);
+      height: auto;
+      width: 20%;
+      border: solid black;
+      color: white;
+
+      .column-title {
+        color: #080707;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .trip-card {
+        text-align: center;
+        display: flex;
+        // border: black;
+        border: black;
+        background: white;
+        color: black;
+        flex-direction: column;
+
+        .trip-card-header {
+          // border: solid black;
+        }
+
+        .trip-card-body {
+          border: black;
+          color: white;
+        }
+      }
+
+      .trip-card:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+}
+// }
