@@ -28,12 +28,26 @@ Mod2 2108 FE
    - The project spec & rubric can be found [here](https://frontend.turing.edu/projects/travel-tracker.html)
 
 
+![Screen Shot 2021-11-16 at 9 16 19 PM](https://user-images.githubusercontent.com/87510749/142128622-be63d030-188a-4fdd-8404-fe318cbc72da.png)
+
+
 ## Abstract
 
   This project is designed as a Web Dashboard for a user to track their travels and vacations. On page load, the user is prompted to log in. Once the user enters the correct username and password, the user is loaded into their specific dashboard for Boarding Pass. If there are trips that are presently happening, these trips are shown in the top portion of the website near the welcome message and the logo. Otherwise, the user's trips get sorted into the columns at the bottom half of the page based on their approval status, and based on whether they are past or upcoming trips.
 
 
+
+https://user-images.githubusercontent.com/87510749/142129044-b6d0e003-6ae0-4831-93a0-44c413ed0222.mov
+
+
+
   Once logged in, a user can also log new trips that they would like to take in the future. They will need to hit the "Add New Trip" button on the page, which will display a pop up modal window, which the user can use to submit their own trip request. When the user is choosing their destination, they will actually see an estimated cost displayed to them that takes into account the destination, the number of travelers, and the duration of the trip. Once the user clicks "Finish" here, the user's trip will automatically appear in the "Pending" column. (this is because the trip has not been approved by a travel agent yet!)
+  
+  
+
+https://user-images.githubusercontent.com/87510749/142128897-f32dcd8b-3b10-4966-a326-5b0129255062.mov
+
+
 
 
   The goal of this project was to build a dashboard that displays different user data, using OOP as a principle design choice, and to work with the Fetch API to request and post new data to a local server, and display that data on the DOM.
