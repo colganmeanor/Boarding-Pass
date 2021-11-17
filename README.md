@@ -86,7 +86,7 @@ https://user-images.githubusercontent.com/87510749/142128897-f32dcd8b-3b10-4966-
   - Successfully used array iterator methods to calculate values from large data sets
   - Successfully implemented ES6 function syntax, as well as ES6 import/export syntax working across various files.
   - Successfully used dayjs and micro-modal npm packages to aid in construction of DOM and calculation of data across various dates.
-  -
+  - Successfully divided my CSS/SCSS into multiple files.
 
 ## Challenges + Improvements
   - I was initially very challenged by planning my data architecture. I was relieved to hear most of my mentors tell me that ultimately this doesn't matter to much, and that I should focus on crafting a data architecture that makes sense for me. In the end, I'm happy with the way I organized my data. It made working in this project **not as hard as it could have been.**
