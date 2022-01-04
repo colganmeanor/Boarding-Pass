@@ -37,8 +37,9 @@ Mod2 2108 FE
   
   **LOG-IN USERNAME AND PASSWORD**: 
   
-  username: traveler50 (where 50 is the ID of the user)
-  password: travel
+  **username:** traveler50 (where 50 is the ID of the user)
+  
+  **password:** travel
   
   If there are trips that are presently happening, these trips are shown in the top portion of the website near the welcome message and the logo. Otherwise, the user's trips get sorted into the columns at the bottom half of the page based on their approval status, and based on whether they are past or upcoming trips.
 
