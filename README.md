@@ -33,7 +33,14 @@ Mod2 2108 FE
 
 ## Abstract
 
-  This project is designed as a Web Dashboard for a user to track their travels and vacations. On page load, the user is prompted to log in. Once the user enters the correct username and password, the user is loaded into their specific dashboard for Boarding Pass. If there are trips that are presently happening, these trips are shown in the top portion of the website near the welcome message and the logo. Otherwise, the user's trips get sorted into the columns at the bottom half of the page based on their approval status, and based on whether they are past or upcoming trips.
+  This project is designed as a Web Dashboard for a user to track their travels and vacations. On page load, the user is prompted to log in. Once the user enters the correct username and password, the user is loaded into their specific dashboard for Boarding Pass. 
+  
+  **LOG-IN USERNAME AND PASSWORD**: 
+  
+  username: traveler50 (where 50 is the ID of the user)
+  password: travel
+  
+  If there are trips that are presently happening, these trips are shown in the top portion of the website near the welcome message and the logo. Otherwise, the user's trips get sorted into the columns at the bottom half of the page based on their approval status, and based on whether they are past or upcoming trips.
 
 
 
